@@ -6,6 +6,7 @@ class Restaurant < ApplicationRecord
   validates :name, :address, :category, presence: true
 
   # A restaurant’s category must belong to this fixed list: ["chinese", "italian", "japanese", "french", "belgian"].
+
   validates_inclusion_of :category, in: ["chinese", "italian", "japanese", "french", "belgian"]
 
 end

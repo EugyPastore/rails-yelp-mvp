@@ -1,0 +1,24 @@
+<h1>Information about one restaurant</h1>
+
+<ul>
+  <li><%= @restaurant.name %></li>
+  <li><%= @restaurant.address %></li>
+  <li><%= @restaurant.phone_number %></li>
+  <li><%= @restaurant.category %></li>
+</ul>
+    <ul>
+      <% @restaurant.reviews.each do |review| %>
+      <%= link_to "Remove this review",
+      review_path(review),
+      method: :delete,
+      data: {confirm: "Are you sure you want to delete?"} %>
+      <li> <%= review.content %> </li>
+      <li> <%= review.rating %> </li>
+
+      <% end %>
+    </ul>
+
+
+<%= link_to "Back to all", restaurants_path, class: "btn btn-success"%>
+<%= link_to "Leave a review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+<%= link_to "Edit review", edit_review_path(@restaurant), class: "btn btn-info" %>
